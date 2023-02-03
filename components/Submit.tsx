@@ -14,7 +14,7 @@ export const Submit = ({
   return (
     <button
       type="submit"
-      className="bg-primary inline-flex items-center justify-center rounded-md px-4 py-[13px] text-white hover:bg-opacity-90"
+      className="w-full bg-primary inline-flex items-center justify-center rounded-md px-4 py-[13px] text-white hover:bg-opacity-90"
     >
       {icon && iconPosition === 'left' ? (
         <span className="mr-3">{icon}</span>
