@@ -12,6 +12,7 @@ specifiers:
   postcss: ^8.4.21
   react: 18.2.0
   react-dom: 18.2.0
+  tailgrids: ^2.0.1
   tailwindcss: ^3.2.4
   typescript: 4.9.5
 
@@ -25,6 +26,7 @@ dependencies:
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  tailgrids: 2.0.1
   typescript: 4.9.5
 
 devDependencies:
@@ -2245,6 +2247,16 @@ packages:
     dependencies:
       '@pkgr/utils': 2.3.1
       tslib: 2.5.0
+    dev: false
+
+  /tailgrids/1.1.7:
+    resolution: {integrity: sha512-osqy2ArBL1Pk1oxHB+jHBGsN4332jvpmgKdXYWsU9bQXduJ0WyQPH5kXVnesQ1KYZBujVv7aKsKyDEYQvRuGcw==}
+    dev: false
+
+  /tailgrids/2.0.1:
+    resolution: {integrity: sha512-fW65ezVt/OjI6rMhC5wKCFwS6i4CiV/uYB7HeZvZctQDTiVd7+F5k+haeM92Ob8RUs5GamwvelQ7BL3/85D+uA==}
+    dependencies:
+      tailgrids: 1.1.7
     dev: false
 
   /tailwindcss/3.2.4_postcss@8.4.21:
