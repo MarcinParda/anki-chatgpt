@@ -1,18 +1,29 @@
 import { Input } from '@/components/Input';
-import React from 'react';
-import { FaDove } from 'react-icons/fa';
+import { Submit } from '@/components/Submit';
+import React, { useState } from 'react';
+import { FiSend } from 'react-icons/fi';
 
 const CreateCardPage = () => {
+  const [question, setQuestion] = useState('What is nuclear fusion?');
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('submit');
+  };
+
   return (
     <section className="max-w-5xl mx-auto pt-10">
-      <form className="flex gap-5">
+      <form className="flex gap-5" onSubmit={handleSubmit}>
         <Input
-          label="Wpisz swoje pytanie"
+          label="Enter your question"
           type="text"
           disabled={false}
           name="question-input"
-          placeholder="Czym jest fuzja jądrowa?"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
         />
+        <span className="self-end">
+          <Submit icon={<FiSend />} label="Generate answer" />
+        </span>
       </form>
     </section>
   );
