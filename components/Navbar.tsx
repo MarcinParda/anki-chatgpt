@@ -18,6 +18,8 @@ export const Navbar = () => {
           <div className="flex w-full items-center justify-between px-4">
             <div>
               <button
+                type="button"
+                title="Toggle Menu"
                 id="navbarToggler"
                 className="ring-primary absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
               >
@@ -32,7 +34,7 @@ export const Navbar = () => {
                 <ul className="block lg:flex">
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="#"
                       className="text-dark hover:text-primary flex text-base font-medium lg:inline-flex lg:ml-12 underline"
                     >
                       Create card
@@ -40,7 +42,7 @@ export const Navbar = () => {
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="#"
                       className="text-dark hover:text-primary flex text-base font-medium lg:inline-flex lg:ml-12"
                     >
                       Settings
@@ -51,7 +53,7 @@ export const Navbar = () => {
             </div>
             <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a
-                href="javascript:void(0)"
+                href="#"
                 className="text-dark hover:text-primary py-3 px-7 text-base font-medium"
               >
                 Logout
