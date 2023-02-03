@@ -5,6 +5,7 @@ import { FiSend } from 'react-icons/fi';
 
 const CreateCardPage = () => {
   const [question, setQuestion] = useState('What is nuclear fusion?');
+  const [answer, setAnswer] = useState('Here goes answer..');
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('submit');
@@ -25,6 +26,12 @@ const CreateCardPage = () => {
           <Submit icon={<FiSend />} label="Generate answer" />
         </span>
       </form>
+      <textarea
+        title="answer"
+        className="mt-4 border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+        readOnly
+        value={answer}
+      />
     </section>
   );
 };
