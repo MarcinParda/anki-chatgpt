@@ -1,22 +1,10 @@
 import { NextApiHandler } from 'next';
-import { Configuration, OpenAIApi } from 'openai';
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+const API_KEY = process.env.OPENAI_API_KEY;
+const model = 'text-davinci-002';
+const url = `https://api.openai.com/v1/engines/${model}/completions`;
 
 const AnswerHandler: NextApiHandler = async (req, res) => {
-  if (!configuration.apiKey) {
-    res.status(500).json({
-      error: {
-        message:
-          'OpenAI API key not configured, please follow instructions in README.md',
-      },
-    });
-    return;
-  }
-
   const { question } = req.body;
 
   if (question.trim().length === 0) {
@@ -28,14 +16,28 @@ const AnswerHandler: NextApiHandler = async (req, res) => {
     return;
   }
 
+  const data = {
+    prompt: `Answer to the following question:
+    ${question}`,
+    temperature: 0.5,
+    max_tokens: 512,
+  };
+
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${API_KEY}`,
+  };
+
   try {
-    const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: `Answer briefly to the following question: 
-      ${question}`,
-      temperature: 0.5,
-    });
-    res.status(200).json({ answer: completion.data.choices[0].text });
+    const completion = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+
+    res
+      .status(200)
+      .json({ answer: completion.choices[0].text.replace(/^\n+/, '') });
   } catch (error) {
     res.status(500).json({
       error: {
