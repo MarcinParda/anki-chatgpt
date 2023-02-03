@@ -1,6 +1,6 @@
 import { Input } from '@/components/Input';
 import { Select } from '@/components/Select';
-import { Submit } from '@/components/Submit';
+import { Button } from '@/components/Button';
 import React, { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 
@@ -35,9 +35,16 @@ const CreateCardPage = () => {
     setPageStatus('ANKI_ADDED');
   };
 
+  const isAnkiButtonDisabled = () => {
+    if (question.trim() === '' || answer.trim() === '') {
+      return true;
+    }
+    return false;
+  };
+
   return (
-    <section className="max-w-5xl mx-auto pt-10">
-      <div className="flex gap-5">
+    <section className="mx-auto pt-10">
+      <div className="flex gap-5 mb-4">
         <Input
           label="Enter your question"
           type="text"
@@ -47,28 +54,33 @@ const CreateCardPage = () => {
           onChange={(e) => setQuestion(e.target.value)}
         />
         <span className="self-end w-52">
-          <Submit
-            onSubmit={generateAnswer}
+          <Button
+            onClick={generateAnswer}
             icon={<FiSend />}
             label="Generate answer"
+            loading={pageStatus === 'GENERATING_ANSWER'}
+            disabled={pageStatus === 'GENERATING_ANSWER'}
           />
         </span>
       </div>
+      <span>Answer to question</span>
       <textarea
         title="answer"
-        className="mt-4 border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
-        readOnly
+        className="mt-1 mb-4 border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
         value={answer}
-      />
-      <Select
-        label="Select deck"
-        options={[
-          { label: 'Deck 1', value: 'deck-1' },
-          { label: 'Deck 2', value: 'deck-2' },
-          { label: 'Deck 3', value: 'deck-3' },
-        ]}
+        onChange={(e) => setAnswer(e.target.value)}
       />
       <div className="mb-4">
+        <Select
+          label="Select deck"
+          options={[
+            { label: 'Deck 1', value: 'deck-1' },
+            { label: 'Deck 2', value: 'deck-2' },
+            { label: 'Deck 3', value: 'deck-3' },
+          ]}
+        />
+      </div>
+      <div className="mb-6">
         <Input
           label="Tags (optional)"
           type="text"
@@ -78,7 +90,11 @@ const CreateCardPage = () => {
           onChange={(e) => setTags(e.target.value)}
         />
       </div>
-      <Submit onSubmit={addAnki} label="Add anki card to deck" />
+      <Button
+        onClick={addAnki}
+        label="Add anki card to deck"
+        disabled={isAnkiButtonDisabled()}
+      />
     </section>
   );
 };
