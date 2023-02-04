@@ -5,5 +5,5 @@ export const getAllDecksNames = async () => {
 };
 
 export const getAllAnkiTags = async () => {
-  return await ankiFetcher('getTags', 6);
+  return await ankiFetcher<string[]>('getTags', 6);
 };
