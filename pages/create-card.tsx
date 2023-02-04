@@ -3,7 +3,9 @@ import { Select } from '@/components/Select';
 import { Button } from '@/components/Button';
 import React, { useEffect, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
-import { getAllAnkiTags } from '@/api';
+import { useQuery } from '@tanstack/react-query';
+import { getAllAnkiTags } from '@/utils/api';
+import { ALL_TAGS } from '@/consts/tanstackQueryKeys';
 
 const CreateCardPage = () => {
   const [question, setQuestion] = useState('What is nuclear fusion?');
@@ -16,6 +18,8 @@ const CreateCardPage = () => {
     | 'ADDING_ANKI'
     | 'ANKI_ADDED'
   >('INITIAL');
+
+  const tagsQuery = useQuery([ALL_TAGS], getAllAnkiTags);
 
   const generateAnswer = async () => {
     setPageStatus('GENERATING_ANSWER');
@@ -42,13 +46,6 @@ const CreateCardPage = () => {
     }
     return false;
   };
-
-  useEffect(() => {
-    (async () => {
-      const tags = (await getAllAnkiTags()) as string[];
-      setTags(tags.join(' '));
-    })();
-  }, []);
 
   return (
     <section className="mx-auto pt-10">

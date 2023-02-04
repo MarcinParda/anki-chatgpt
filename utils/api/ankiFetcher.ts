@@ -1,6 +1,6 @@
-import { ANKI_CONNECT_URL } from '@/consts';
+import { ANKI_CONNECT_URL } from '@/consts/api';
 
-function invoke(action: string, version: number, params = {}) {
+export const ankiFetcher = (action: string, version: number, params = {}) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('error', () => reject('failed to issue request'));
@@ -28,8 +28,4 @@ function invoke(action: string, version: number, params = {}) {
     xhr.open('POST', ANKI_CONNECT_URL);
     xhr.send(JSON.stringify({ action, version, params }));
   });
-}
-
-export const getAllAnkiTags = async () => {
-  return invoke('getTags', 6);
 };
