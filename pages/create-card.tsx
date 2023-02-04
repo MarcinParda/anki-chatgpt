@@ -1,8 +1,9 @@
 import { Input } from '@/components/Input';
 import { Select } from '@/components/Select';
 import { Button } from '@/components/Button';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
+import { getAllAnkiTags } from '@/api';
 
 const CreateCardPage = () => {
   const [question, setQuestion] = useState('What is nuclear fusion?');
@@ -41,6 +42,13 @@ const CreateCardPage = () => {
     }
     return false;
   };
+
+  useEffect(() => {
+    (async () => {
+      const tags = (await getAllAnkiTags()) as string[];
+      setTags(tags.join(' '));
+    })();
+  }, []);
 
   return (
     <section className="mx-auto pt-10">
