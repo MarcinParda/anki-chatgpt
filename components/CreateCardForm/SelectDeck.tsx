@@ -1,15 +1,17 @@
+import { ALL_DECKS_NAMES } from '@/consts/tanstackQueryKeys';
+import { getAllDecksNames } from '@/utils/api';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Select } from '../Select';
 
 export const SelectDeck = () => {
-  return (
-    <Select
-      label="Select deck"
-      options={[
-        { label: 'Deck 1', value: 'deck-1' },
-        { label: 'Deck 2', value: 'deck-2' },
-        { label: 'Deck 3', value: 'deck-3' },
-      ]}
-    />
-  );
+  const { isLoading, data } = useQuery([ALL_DECKS_NAMES], getAllDecksNames);
+
+  const options =
+    data?.map((deckName) => ({
+      label: deckName,
+      value: deckName,
+    })) || [];
+
+  return <Select label="Select deck" options={options} loading={isLoading} />;
 };

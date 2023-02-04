@@ -21,24 +21,26 @@ export const GenerateAnswerForm = () => {
 
   return (
     <>
-      <div className="flex gap-5">
-        <Input
-          label="Enter your question"
-          type="text"
-          disabled={false}
-          name="question-input"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-        <span className="w-52 self-end">
-          <Button
-            onClick={generateAnswer}
-            icon={<FiSend />}
-            label="Generate answer"
-            // loading={pageStatus === 'GENERATING_ANSWER'}
-            // disabled={pageStatus === 'GENERATING_ANSWER'}
-          />
-        </span>
+      <div>
+        <label>Enter your question</label>
+        <div className="flex gap-5">
+          <span className="w-8/12">
+            <Input
+              type="text"
+              disabled={false}
+              name="question-input"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+            />
+          </span>
+          <span className="w-4/12">
+            <Button
+              onClick={generateAnswer}
+              icon={<FiSend />}
+              label="Generate answer"
+            />
+          </span>
+        </div>
       </div>
       <label>
         <span>Answer to question</span>

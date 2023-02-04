@@ -1,7 +1,7 @@
 import { ankiFetcher } from './ankiFetcher';
 
 export const getAllDecksNames = async () => {
-  return await ankiFetcher('getNames', 6);
+  return await ankiFetcher<string[]>('deckNames', 6);
 };
 
 export const getAllAnkiTags = async () => {
