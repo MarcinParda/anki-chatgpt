@@ -21,11 +21,11 @@ export const Navbar = () => {
                 type="button"
                 title="Toggle Menu"
                 id="navbarToggler"
-                className="ring-primary absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
+                className="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
               >
-                <span className="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
-                <span className="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
-                <span className="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
+                <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
+                <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
               </button>
               <nav
                 id="navbarCollapse"
@@ -35,7 +35,7 @@ export const Navbar = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-dark hover:text-primary flex text-base font-medium lg:inline-flex lg:ml-12 underline"
+                      className="flex text-base font-medium text-dark underline hover:text-primary lg:ml-12 lg:inline-flex"
                     >
                       Create card
                     </a>
@@ -43,7 +43,7 @@ export const Navbar = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-dark hover:text-primary flex text-base font-medium lg:inline-flex lg:ml-12"
+                      className="flex text-base font-medium text-dark hover:text-primary lg:ml-12 lg:inline-flex"
                     >
                       Settings
                     </a>
@@ -54,7 +54,7 @@ export const Navbar = () => {
             <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
               <a
                 href="#"
-                className="text-dark hover:text-primary py-3 px-7 text-base font-medium"
+                className="py-3 px-7 text-base font-medium text-dark hover:text-primary"
               >
                 Logout
               </a>
