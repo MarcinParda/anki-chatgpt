@@ -54,7 +54,7 @@ const sections: FooterSection[] = [
           <a
             title="Github Profile"
             href="#"
-            className="text-dark hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+            className="mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] text-dark hover:border-primary hover:bg-primary hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
           >
             <FaGithub />
           </a>
@@ -68,13 +68,13 @@ const sections: FooterSection[] = [
 const FooterSection = ({ title, links }: FooterSection) => (
   <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
     <div className="w-full">
-      <h4 className="text-dark mb-4 text-lg font-semibold">{title}</h4>
+      <h4 className="mb-4 text-lg font-semibold text-dark">{title}</h4>
       <ul>
         {links.map((link) => (
           <li key={link.href}>
             <a
               href={link.href}
-              className="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
+              className="mb-2 inline-block text-base leading-loose text-body-color hover:text-primary"
             >
               {link.label}
             </a>

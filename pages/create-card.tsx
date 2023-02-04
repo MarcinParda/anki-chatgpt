@@ -2,9 +2,7 @@ import React from 'react';
 import { CreateCardForm } from '@/components/CreateCardForm';
 
 const CreateCardPage = () => {
-  return (
-    <CreateCardForm />
-  );
+  return <CreateCardForm />;
 };
 
 export default CreateCardPage;

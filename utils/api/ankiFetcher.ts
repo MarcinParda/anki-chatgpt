@@ -1,6 +1,10 @@
 import { ANKI_CONNECT_URL } from '@/consts/api';
 
-export const ankiFetcher = <ResponseData>(action: string, version: number, params = {}): Promise<ResponseData> => {
+export const ankiFetcher = <ResponseData>(
+  action: string,
+  version: number,
+  params = {}
+): Promise<ResponseData> => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('error', () => reject('failed to issue request'));
