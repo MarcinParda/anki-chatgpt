@@ -9,7 +9,7 @@ export const Multiselect = ({ options, label }: MultiselectProps) => {
     <label className="block w-full text-left">
       <span>{label}</span>
       <select
-        className="mt-1 w-full  rounded-lg border border-form-stroke outline-1 outline-primary"
+        className="w-full rounded-lg border border-form-stroke outline-1 outline-primary"
         multiple
       >
         {options.map(({ label, value }) => (

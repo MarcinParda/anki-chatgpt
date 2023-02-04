@@ -42,25 +42,29 @@ export const CreateCardForm = () => {
     return false;
   };
   return (
-    <section className="mx-auto flex flex-col gap-4 pt-10">
-      <div className="flex gap-5">
-        <Input
-          label="Enter your question"
-          type="text"
-          disabled={false}
-          name="question-input"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
-        <span className="w-52 self-end">
-          <Button
-            onClick={generateAnswer}
-            icon={<FiSend />}
-            label="Generate answer"
-            loading={pageStatus === 'GENERATING_ANSWER'}
-            disabled={pageStatus === 'GENERATING_ANSWER'}
-          />
-        </span>
+    <section className="mx-auto flex flex-col gap-8 pt-10">
+      <div>
+        <label>Enter your question</label>
+        <div className="flex gap-5">
+          <div className="w-8/12">
+            <Input
+              type="text"
+              disabled={false}
+              name="question-input"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+            />
+          </div>
+          <div className="w-4/12 ">
+            <Button
+              onClick={generateAnswer}
+              icon={<FiSend />}
+              label="Generate answer"
+              loading={pageStatus === 'GENERATING_ANSWER'}
+              disabled={pageStatus === 'GENERATING_ANSWER'}
+            />
+          </div>
+        </div>
       </div>
       <label>
         <span>Answer to question</span>
