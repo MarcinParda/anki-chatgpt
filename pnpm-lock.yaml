@@ -12,6 +12,7 @@ specifiers:
   eslint-config-next: 13.1.6
   eslint-config-prettier: ^8.6.0
   eslint-plugin-jsx-a11y: ^6.7.1
+  eslint-plugin-next: ^0.0.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-react: ^7.32.2
   next: 13.1.6
@@ -51,6 +52,7 @@ devDependencies:
   eslint-config-airbnb: 19.0.4_tepkhqi32jyc4jfy5rnxemqeny
   eslint-config-prettier: 8.6.0_eslint@8.33.0
   eslint-plugin-jsx-a11y: 6.7.1_eslint@8.33.0
+  eslint-plugin-next: 0.0.0
   eslint-plugin-prettier: 4.2.1_jqplj6qf3uqpxpu4gdyhwwasnq
   eslint-plugin-react: 7.32.2_eslint@8.33.0
   postcss: 8.4.21
@@ -1085,6 +1087,10 @@ packages:
       object.entries: 1.1.6
       object.fromentries: 2.0.6
       semver: 6.3.0
+
+  /eslint-plugin-next/0.0.0:
+    resolution: {integrity: sha512-IldNDVb6WNduggwRbYzSGZhaskUwVecJ6fhmqwX01+S1aohwAWNzU4me6y47DDzpD/g0fdayNBGxEdt9vKkUtg==}
+    dev: true
 
   /eslint-plugin-prettier/4.2.1_jqplj6qf3uqpxpu4gdyhwwasnq:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
