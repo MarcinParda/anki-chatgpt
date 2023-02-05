@@ -22,6 +22,7 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.2.2
   react: 18.2.0
   react-dom: 18.2.0
+  react-hook-form: ^7.43.0
   react-icons: ^4.7.1
   tailgrids: ^2.0.1
   tailwindcss: ^3.2.4
@@ -40,6 +41,7 @@ dependencies:
   openai: 3.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.43.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   tailgrids: 2.0.1
   tw-elements: 1.0.0-alpha13_postcss@8.4.21
@@ -566,7 +568,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001450
-      electron-to-chromium: 1.4.285
+      electron-to-chromium: 1.4.286
       node-releases: 2.0.9
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -809,8 +811,8 @@ packages:
     dependencies:
       esutils: 2.0.3
 
-  /electron-to-chromium/1.4.285:
-    resolution: {integrity: sha512-47o4PPgxfU1KMNejz+Dgaodf7YTcg48uOfV1oM6cs3adrl2+7R+dHkt3Jpxqo0LRCbGJEzTKMUt0RdvByb/leg==}
+  /electron-to-chromium/1.4.286:
+    resolution: {integrity: sha512-Vp3CVhmYpgf4iXNKAucoQUDcCrBQX3XLBtwgFqP9BUXuucgvAV9zWp1kYU7LL9j4++s9O+12cb3wMtN4SJy6UQ==}
     dev: true
 
   /emoji-regex/9.2.2:
@@ -2185,6 +2187,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form/7.43.0_react@18.2.0:
+    resolution: {integrity: sha512-/rVEz7T0gLdSFwPqutJ1kn2e0sQNyb9ci/hmwEYr2YG0KF/LSuRLvNrf9QWJM+gj88CjDpDW5Bh/1AD7B2+z9Q==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-icons/4.7.1_react@18.2.0:

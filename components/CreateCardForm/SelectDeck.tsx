@@ -2,9 +2,14 @@ import { ALL_DECKS_NAMES } from '@/consts/tanstackQueryKeys';
 import { getAllDecksNames } from '@/utils/api';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import { Select } from '../Select';
 
-export const SelectDeck = () => {
+interface SelectDeckProps {
+  register: UseFormRegisterReturn<'deck'>;
+}
+
+export const SelectDeck = ({ register }: SelectDeckProps) => {
   const { isLoading, data } = useQuery([ALL_DECKS_NAMES], getAllDecksNames);
 
   const options =
@@ -13,5 +18,12 @@ export const SelectDeck = () => {
       value: deckName,
     })) || [];
 
-  return <Select label="Select deck" options={options} loading={isLoading} />;
+  return (
+    <Select
+      label="Select deck"
+      options={options}
+      loading={isLoading}
+      register={register}
+    />
+  );
 };

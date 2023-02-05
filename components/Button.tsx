@@ -3,7 +3,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 interface SubmitProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   loading?: boolean;
   icon?: React.ReactNode;
