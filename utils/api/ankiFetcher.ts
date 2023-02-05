@@ -1,9 +1,30 @@
 import { ANKI_CONNECT_URL } from '@/consts/api';
 
+export interface AnkiParams {
+  note?: {
+    fields: {
+      Front: string;
+      Back: string;
+    };
+    deckName: string;
+    tags: string[];
+    modelName: 'Basic';
+    options?: {
+      allowDuplicate?: boolean;
+      duplicateScope?: 'deck';
+      duplicateScopeOptions?: {
+        deckName?: string;
+        checkChildren?: boolean;
+        checkAllModels?: boolean;
+      };
+    };
+  };
+}
+
 export const ankiFetcher = <ResponseData>(
   action: string,
   version: number,
-  params = {}
+  params: AnkiParams = {}
 ): Promise<ResponseData> => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
