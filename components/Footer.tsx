@@ -66,7 +66,7 @@ const sections: FooterSection[] = [
 ];
 
 const FooterSection = ({ title, links }: FooterSection) => (
-  <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
+  <div className="w-full sm:w-1/2 lg:w-3/12">
     <div className="w-full">
       <h4 className="mb-4 text-lg font-semibold text-dark">{title}</h4>
       <ul>
@@ -88,16 +88,14 @@ const FooterSection = ({ title, links }: FooterSection) => (
 export const Footer = () => {
   return (
     <footer className="relative z-10 bg-white pt-20">
-      <div className="container mx-auto">
-        <div className="-mx-4 flex flex-wrap justify-center">
-          {sections.map((section) => (
-            <FooterSection
-              key={section.title}
-              title={section.title}
-              links={section.links}
-            />
-          ))}
-        </div>
+      <div className="container mx-auto flex flex-wrap justify-center px-0 lg:max-w-[768px]">
+        {sections.map((section) => (
+          <FooterSection
+            key={section.title}
+            title={section.title}
+            links={section.links}
+          />
+        ))}
       </div>
       <FooterBackgroundCircles />
     </footer>

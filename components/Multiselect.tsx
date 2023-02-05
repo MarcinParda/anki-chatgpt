@@ -1,13 +1,23 @@
 import React from 'react';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 interface MultiselectProps {
   options: { label: string; value: string }[];
-  label: string;
+  label?: string;
+  loading?: boolean;
 }
 
-export const Multiselect = ({ options, label }: MultiselectProps) => {
+export const Multiselect = ({ options, label, loading }: MultiselectProps) => {
   return (
     <label className="block w-full text-left">
-      <span>{label}</span>
+      <span className="flex items-center">
+        {label}
+        {loading && (
+          <AiOutlineLoading3Quarters
+            size={17}
+            className="ml-2 mb-1 animate-spin"
+          />
+        )}
+      </span>
       <select
         className="w-full rounded-lg border border-form-stroke outline-1 outline-primary"
         multiple

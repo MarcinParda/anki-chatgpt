@@ -5,17 +5,19 @@ import React from 'react';
 import { Multiselect } from '../Multiselect';
 
 export const TagMultiselect = () => {
-  const tagsQuery = useQuery([ALL_TAGS], getAllAnkiTags);
+  const { data, isLoading } = useQuery([ALL_TAGS], getAllAnkiTags);
+
+  const options =
+    data?.map((tag) => ({
+      label: tag,
+      value: tag,
+    })) || [];
 
   return (
     <Multiselect
       label='Tags (optional, you can select multiple tags by pressing "Ctrl")'
-      options={
-        tagsQuery.data?.map((tag) => ({
-          label: tag,
-          value: tag,
-        })) || []
-      }
+      options={options}
+      loading={isLoading}
     />
   );
 };

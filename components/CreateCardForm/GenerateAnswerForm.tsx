@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { ANSWER } from '@/consts/tanstackQueryKeys';
+import { getAnswer } from '@/utils/api';
+import { useMutation } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { Button } from '../Button';
 import { Input } from '../Input';
@@ -6,18 +9,17 @@ import { Input } from '../Input';
 export const GenerateAnswerForm = () => {
   const [question, setQuestion] = useState('What is ChatGPT-3?');
   const [answer, setAnswer] = useState('Here goes answer...');
+  const { data, isLoading, mutate } = useMutation([ANSWER], getAnswer);
 
-  const generateAnswer = async () => {
-    const response = await fetch('/api/answer', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ question }),
-    });
-    const data = await response.json();
-    setAnswer(data.answer);
+  const generateAnswer = () => {
+    mutate(question);
   };
+
+  useEffect(() => {
+    if (data) {
+      setAnswer(data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -38,6 +40,8 @@ export const GenerateAnswerForm = () => {
               onClick={generateAnswer}
               icon={<FiSend />}
               label="Generate answer"
+              loading={isLoading}
+              disabled={isLoading}
             />
           </span>
         </div>
@@ -46,9 +50,10 @@ export const GenerateAnswerForm = () => {
         <span>Answer to question</span>
         <textarea
           title="answer"
-          className="mt-1 w-full rounded-lg border border-form-stroke py-3 px-5 font-medium text-body-color placeholder-body-color outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-[#F5F7FD]"
+          className="mt-1 w-full rounded-lg border border-form-stroke py-3 px-5 font-medium text-body-color placeholder-body-color outline-none transition focus:border-primary active:border-primary disabled:cursor-wait disabled:bg-[#F5F7FD]"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
+          disabled={isLoading}
         />
       </label>
     </>

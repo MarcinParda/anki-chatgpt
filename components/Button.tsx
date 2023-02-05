@@ -22,7 +22,9 @@ export const Button = ({
   return (
     <button
       type={type}
-      className="inline-flex w-full cursor-pointer items-center justify-center rounded-md bg-primary px-4 py-3 text-white hover:bg-opacity-90 disabled:cursor-not-allowed disabled:bg-gray disabled:text-slate-400"
+      className={`inline-flex w-full cursor-pointer items-center justify-center rounded-md bg-primary px-4 py-3 text-white hover:bg-opacity-90 ${
+        loading ? 'disabled:cursor-wait' : 'disabled:cursor-not-allowed'
+      } disabled:bg-gray disabled:text-slate-400`}
       {...buttonProps}
     >
       {loading ? (
