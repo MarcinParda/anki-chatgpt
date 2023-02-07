@@ -10,14 +10,14 @@ export const getAllAnkiTags = async () => {
 };
 
 export const createAnkiCard = async (formData: CreateCardFormData) => {
-  const { answer, deck, question, tags } = formData;
+  const { answer, deckName, question, tags } = formData;
   const params: AnkiParams = {
     note: {
       fields: {
         Front: question,
         Back: answer,
       },
-      deckName: deck,
+      deckName,
       tags: tags,
       modelName: 'Basic',
     },

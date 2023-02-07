@@ -10,24 +10,18 @@ import { createAnkiCard } from '@/utils/api';
 export interface CreateCardFormData {
   answer: string;
   tags: string[];
-  deck: string;
+  deckName: string;
   question: string;
 }
-
-type Optional<T> = { [P in keyof T]?: T[P] };
-
-const defaultValues: Optional<CreateCardFormData> = {
-  tags: [],
-  question: 'What is ChatGPT?',
-};
 
 export const CreateCardForm = () => {
   const { mutate } = useMutation(createAnkiCard, {
     onSuccess: () => reset(),
   });
   const { register, handleSubmit, getValues, setValue, reset } =
-    useForm<CreateCardFormData>({ defaultValues });
+    useForm<CreateCardFormData>();
   const setAnswer = (answer: string) => setValue('answer', answer);
+  const setDeckName = (deckName: string) => setValue('deckName', deckName);
   const onSubmit: SubmitHandler<CreateCardFormData> = (data) => mutate(data);
   const getQuestion = () => getValues('question');
 
@@ -43,7 +37,7 @@ export const CreateCardForm = () => {
           setAnswer={setAnswer}
         />
         <hr className="my-2 text-slate-300" />
-        <SelectDeck register={register('deck')} />
+        <SelectDeck register={register('deckName')} setDeckName={setDeckName} />
         <TagMultiselect register={register('tags')} />
         <Button type="submit" label="Add anki card to deck" />
       </form>

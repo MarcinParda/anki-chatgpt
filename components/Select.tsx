@@ -22,11 +22,13 @@ export const Select = ({ label, options, loading, register }: SelectProps) => {
       </span>
       <select
         className="form-select w-full appearance-none rounded-lg border border-form-stroke bg-white bg-no-repeat py-3 px-5 text-body-color transition ease-in-out focus:border-primary focus:outline-none active:border-primary"
-        aria-label="Default select example"
+        aria-label="Select deck"
+        defaultValue={options.at(0)?.value}
+        name="deckName"
         {...register}
       >
         {options.map(({ label, value }) => (
-          <option key={value} value={value} selected>
+          <option key={value} value={value}>
             {label}
           </option>
         ))}
