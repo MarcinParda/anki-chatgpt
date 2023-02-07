@@ -6,6 +6,8 @@ import { SelectDeck } from './SelectDeck';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { createAnkiCard } from '@/utils/api';
+import { toast } from 'react-toastify';
+import { capitalize } from '@/utils/helpers';
 
 export interface CreateCardFormData {
   answer: string;
@@ -15,8 +17,27 @@ export interface CreateCardFormData {
 }
 
 export const CreateCardForm = () => {
+  const createCardNotify = (deck: string) =>
+    toast(`Card created in deck: ${deck}`, { type: 'success' });
+  const errorCreateCardNotify = (error: unknown) => {
+    if (typeof error === 'string') {
+      toast(capitalize(error), { type: 'error' });
+      return;
+    }
+    console.error(error);
+    toast(
+      'Error during creating card! You can read the error in console (Press F12)',
+      { type: 'error' }
+    );
+  };
   const { mutate } = useMutation(createAnkiCard, {
-    onSuccess: () => reset(),
+    onSuccess: (_, { deckName }) => {
+      createCardNotify(deckName);
+      reset();
+    },
+    onError: (error) => {
+      errorCreateCardNotify(error);
+    },
   });
   const { register, handleSubmit, getValues, setValue, reset } =
     useForm<CreateCardFormData>();
