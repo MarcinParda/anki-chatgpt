@@ -5,7 +5,7 @@ const model = 'text-davinci-002';
 const url = `https://api.openai.com/v1/engines/${model}/completions`;
 
 const AnswerHandler: NextApiHandler = async (req, res) => {
-  const { question } = req.body;
+  const { question, temperature = 0.7, max_tokens = 512 } = req.body;
 
   if (question.trim().length === 0) {
     res.status(400).json({
@@ -17,10 +17,9 @@ const AnswerHandler: NextApiHandler = async (req, res) => {
   }
 
   const data = {
-    prompt: `Answer to the following question:
-    ${question}`,
-    temperature: 0.5,
-    max_tokens: 512,
+    prompt: question,
+    temperature,
+    max_tokens,
   };
 
   const headers = {

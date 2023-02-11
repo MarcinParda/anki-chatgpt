@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export const Navbar = () => {
@@ -9,20 +10,20 @@ export const Navbar = () => {
           <nav id="navbarCollapse" className="rounded-lg">
             <ul className="block lg:flex">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/create-card"
                   className="flex text-base font-medium text-dark underline hover:text-primary"
                 >
                   Create card
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/settings"
                   className="flex text-base font-medium text-dark hover:text-primary lg:ml-8"
                 >
                   Settings
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
