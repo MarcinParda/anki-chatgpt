@@ -37,7 +37,7 @@ export const GenerateAnswerForm = ({
               name="question"
               type="text"
               disabled={false}
-              placeholder="Here goes answer..."
+              placeholder="Here goes question..."
               register={register('question')}
             />
           </span>
